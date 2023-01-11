@@ -21,14 +21,14 @@ const totalDisponible = () => {
 
 
 const calcularBilletes = (saldoARetirar, denominacion) => {
-    let contador = saldoARetirar / denominacion
+    let cantidad = saldoARetirar / denominacion
 
-    if (contador > disponible[denominacion]) {
-        contador = disponible[denominacion]
+    if (cantidad > disponible[denominacion]) {
+        cantidad = disponible[denominacion]
     }
-    disponible[denominacion] -= contador
+    disponible[denominacion] -= cantidad
 
-    return contador
+    return cantidad
 }
 
 
@@ -42,12 +42,12 @@ const procesar = valorAretirar => {
     let saldoARetirar = valorAretirar;
     while (saldoARetirar > 0) {
 
-        let contador = 0;
+        let cantidad = 0;
         for (let i = 0; i < billetes.length; i++) {
-            contador = calcularBilletes(saldoARetirar, billetes[i]);
-            console.log(`${contador} billetes de denonimacion: ${billetes[i]}`);
+            cantidad = calcularBilletes(saldoARetirar, billetes[i]);
+            console.log(`${cantidad} billetes de denonimacion: ${billetes[i]}`);
 
-            saldoARetirar -= contador * billetes[i]
+            saldoARetirar -= cantidad * billetes[i]
         }
     }
 }
